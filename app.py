@@ -205,8 +205,8 @@ else:
             for i, row in df_display.iterrows():
                 cols = st.columns([3,1,1])
                 cols[0].write(f"**{row['Name']}**")
-                qty = cols[1].number_input(f"จำนวน_{i}", min_value=0, step=1, key=f"qty_{i}")
-                if cols[0].button(f"สั่งซื้อ_{i}"):
+                qty = cols[1].number_input(f"ID{i} จำนวน", min_value=0, step=1, key=f"qty_{i}")
+                if cols[0].button(f"ID{i} สั่งซื้อ"):
                     if qty > 0:
                         new_order = {
                             "วันที่": pd.Timestamp.now().strftime("%d/%m/%Y %H:%M"),
@@ -231,3 +231,4 @@ else:
                 my_orders_display = my_orders.copy()
                 my_orders_display.insert(0, "No.", range(1, len(my_orders_display) + 1))
                 st.dataframe(my_orders_display)
+
